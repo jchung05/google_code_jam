@@ -1,10 +1,10 @@
 def which(N, K):
     s = [N]
     while K:
-        if s[0] > 0:
-            tmp = s[0] - 1
+        if max(s) > 0:
+            tmp = max(s) - 1
         else:
-            tmp = s[0]
+            tmp = max(s)
         if tmp % 2 == 0:
             s.append(tmp // 2)
             s.append(tmp // 2)
@@ -13,8 +13,7 @@ def which(N, K):
             s.append(tmp // 2)
         K -= 1
         if K is not 0:
-            s.sort(reverse=True)
-            s = s[1:]
+            s.remove(max(s))
     return (max(s[-2:]), min(s[-2:]))
 
 f = open('small1.in', 'r')
